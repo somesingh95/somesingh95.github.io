@@ -496,17 +496,33 @@
 
         .project-card .platforms {
             display: flex;
+            flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1rem;
         }
 
-        .project-card .platforms span {
+        .project-card .platforms span,
+        .project-card .platforms a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
             background: rgba(34, 197, 94, 0.1);
             color: var(--success);
             padding: 0.2rem 0.6rem;
             border-radius: 4px;
             font-size: 0.75rem;
             border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .project-card .platforms a {
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .project-card .platforms a:hover {
+            background: rgba(34, 197, 94, 0.25);
+            transform: translateY(-1px);
         }
 
         .project-card .tech-stack {
@@ -521,6 +537,58 @@
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
             font-size: 0.7rem;
+        }
+
+        .archived-apps {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 0.75rem;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .archived-apps a,
+        .archived-apps span {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.4));
+            color: var(--text);
+            padding: 0.7rem 0.9rem;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .archived-apps a { text-decoration: none; cursor: pointer; }
+
+        .archived-apps a::before,
+        .archived-apps span::before {
+            content: "\f3cd";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        .archived-apps a:hover,
+        .archived-apps span:hover {
+            transform: translateY(-3px);
+            border-color: rgba(14, 165, 233, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .archived-apps a small,
+        .archived-apps span small {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.68rem;
+            font-weight: 400;
+            margin-top: 0.1rem;
         }
 
         /* Highlights Section */
@@ -894,7 +962,7 @@
             </div>
             <div class="timeline">
                 <div class="timeline-item fade-in">
-                    <div class="period">Dec 2023 — Present</div>
+                    <div class="period">Dec 2023 — Apr 2026</div>
                     <h3>Senior Software Engineer | Mobile Lead</h3>
                     <div class="company">E-Alpha4Tech || Neepanlok Infotech Pvt Ltd — Remote, India</div>
                     <div class="tech-used">
@@ -986,13 +1054,45 @@
             </div>
             <div class="projects-grid">
                 <div class="project-card fade-in">
+                    <div class="domain">Local Commerce / Fintech</div>
+                    <h3>IRL Deals</h3>
+                    <div class="period">2025 — Present</div>
+                    <p>Two-sided local deals marketplace. Businesses get a live storefront inside the consumer app, Stripe Connect onboarding, a one-tap barcode voucher scanner, and a real-time dashboard (revenue, redemptions, avg. ticket, new vs. returning), push alerts, and tax-ready statements.</p>
+                    <div class="platforms">
+                        <a href="https://play.google.com/store/apps/details?id=com.irldeals" target="_blank" rel="noopener"><i class="fab fa-android"></i> Consumer App</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.irldeals.biz" target="_blank" rel="noopener"><i class="fab fa-android"></i> Business App</a>
+                        <span><i class="fas fa-check-circle"></i> Published</span>
+                    </div>
+                    <div class="tech-stack">
+                        <span>React Native</span><span>TypeScript</span><span>Node.js</span><span>Stripe Connect</span><span>Push Notifications</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="domain">EV Charging / Energy</div>
+                    <h3>bp pulse</h3>
+                    <div class="period">Dec 2023 — Apr 2026</div>
+                    <p>EV charging platform for British Petroleum — 9,000+ charge points, live map with connector/kW filtering, in-app wallet &amp; payments, subscriptions, and downloadable VAT receipts.</p>
+                    <div class="platforms">
+                        <a href="https://apps.apple.com/us/app/bp-pulse-ev-charging/id6448033048" target="_blank" rel="noopener"><i class="fab fa-apple"></i> iOS</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.bp.mobile.bppulse.us" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <a href="https://www.bppulse.com/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Web</a>
+                        <span><i class="fas fa-check-circle"></i> Published</span>
+                    </div>
+                    <div class="tech-stack">
+                        <span>React Native</span><span>React JS</span><span>TypeScript</span><span>Node.js</span><span>PostgreSQL</span><span>Stripe</span><span>Azure</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
                     <div class="domain">E-Commerce / Retail</div>
                     <h3>Laithwaites Wine UK</h3>
                     <div class="period">Apr 2024 — Jan 2025</div>
                     <p>Award-winning e-commerce wine app with personalized recommendations, advanced filtering, secure checkout, and real-time inventory sync.</p>
                     <div class="platforms">
-                        <span><i class="fab fa-apple"></i> iOS</span>
-                        <span><i class="fab fa-android"></i> Android</span>
+                        <a href="https://apps.apple.com/gb/app/laithwaites-wine-uk/id6587574329" target="_blank" rel="noopener"><i class="fab fa-apple"></i> iOS</a>
+                        <a href="https://play.google.com/store/apps/details?id=co.uk.laithwaites" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <a href="https://www.laithwaites.co.uk/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Web</a>
                         <span><i class="fas fa-check-circle"></i> Published</span>
                     </div>
                     <div class="tech-stack">
@@ -1006,8 +1106,9 @@
                     <div class="period">Oct 2023 — Mar 2024</div>
                     <p>Digital mall companion with real-time indoor navigation, loyalty rewards, push-driven promotions, and event tracking.</p>
                     <div class="platforms">
-                        <span><i class="fab fa-apple"></i> iOS</span>
-                        <span><i class="fab fa-android"></i> Android</span>
+                        <a href="https://apps.apple.com/tr/app/emaar-square-mall/id1241865120" target="_blank" rel="noopener"><i class="fab fa-apple"></i> iOS</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.kns.mallframe.emaar" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <a href="https://www.emaarsquaremall.com/en/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Web</a>
                         <span><i class="fas fa-check-circle"></i> Published</span>
                     </div>
                     <div class="tech-stack">
@@ -1021,9 +1122,8 @@
                     <div class="period">Jan 2023 — Sep 2023</div>
                     <p>Unified property management app with payments, service requests, amenity bookings, and real-time property updates.</p>
                     <div class="platforms">
-                        <span><i class="fab fa-apple"></i> iOS</span>
-                        <span><i class="fab fa-android"></i> Android</span>
-                        <span><i class="fas fa-globe"></i> Web</span>
+                        <a href="https://apps.apple.com/ae/app/emaar-one/id1445056033" target="_blank" rel="noopener"><i class="fab fa-apple"></i> iOS</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.emaartechnologies.emaarone" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
                         <span><i class="fas fa-check-circle"></i> Published</span>
                     </div>
                     <div class="tech-stack">
@@ -1037,12 +1137,29 @@
                     <div class="period">Apr 2022 — Dec 2022</div>
                     <p>Lifestyle app with store directories, dining options, Reel Cinemas integration, real-time offers, and event notifications.</p>
                     <div class="platforms">
-                        <span><i class="fab fa-apple"></i> iOS</span>
-                        <span><i class="fab fa-android"></i> Android</span>
+                        <a href="https://apps.apple.com/ae/app/dubai-marina-mall/id6443643409" target="_blank" rel="noopener"><i class="fab fa-apple"></i> iOS</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.emaartechnologies.dubaimarinamall" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <a href="https://www.dubaimarinamall.com/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Web</a>
                         <span><i class="fas fa-check-circle"></i> Published</span>
                     </div>
                     <div class="tech-stack">
                         <span>React Native</span><span>Node.js</span><span>Firebase</span><span>Azure</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="domain">Retail / Smart Mall</div>
+                    <h3>The Dubai Mall</h3>
+                    <div class="period">2022 — 2023</div>
+                    <p>Companion app for the world's most-visited mall — interactive store directory, dining, indoor navigation, offers, events, and parking finder.</p>
+                    <div class="platforms">
+                        <a href="https://apps.apple.com/in/app/dubai-mall/id430795858" target="_blank" rel="noopener"><i class="fab fa-apple"></i> iOS</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.thedubaimall" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <a href="https://thedubaimall.com/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Web</a>
+                        <span><i class="fas fa-check-circle"></i> Published</span>
+                    </div>
+                    <div class="tech-stack">
+                        <span>React Native</span><span>Node.js</span><span>Firebase</span>
                     </div>
                 </div>
 
@@ -1052,9 +1169,8 @@
                     <div class="period">Apr 2021 — Mar 2022</div>
                     <p>South Florida's modern train booking app with end-to-end booking, payments, real-time schedule management, and trip customization.</p>
                     <div class="platforms">
-                        <span><i class="fab fa-apple"></i> iOS</span>
-                        <span><i class="fab fa-android"></i> Android</span>
-                        <span><i class="fas fa-globe"></i> Web</span>
+                        <a href="https://apps.apple.com/us/app/brightline/id1570969062" target="_blank" rel="noopener"><i class="fab fa-apple"></i> iOS</a>
+                        <a href="https://www.gobrightline.com/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Web</a>
                         <span><i class="fas fa-check-circle"></i> Published</span>
                     </div>
                     <div class="tech-stack">
@@ -1101,8 +1217,7 @@
                     <h3>ShafastShop</h3>
                     <p>International e-commerce app with multi-brand catalog, province-wide shipping, and flexible return policy.</p>
                     <div class="platforms">
-                        <span><i class="fab fa-apple"></i> iOS</span>
-                        <span><i class="fab fa-android"></i> Android</span>
+                        <a href="https://apps.apple.com/us/app/shafastshop/id1486552911" target="_blank" rel="noopener"><i class="fab fa-apple"></i> iOS</a>
                         <span><i class="fas fa-check-circle"></i> Published</span>
                     </div>
                     <div class="tech-stack">
@@ -1129,14 +1244,105 @@
                     <h3>First India News</h3>
                     <p>News aggregation app with categorized sections: Politics, India, Rajasthan, World, Sports, Entertainment.</p>
                     <div class="platforms">
-                        <span><i class="fab fa-apple"></i> iOS</span>
-                        <span><i class="fab fa-android"></i> Android</span>
+                        <a href="https://apps.apple.com/in/app/first-india-news/id1462268102" target="_blank" rel="noopener"><i class="fab fa-apple"></i> iOS</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.firstindiya" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <a href="http://firstindianews.com/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Web</a>
                         <span><i class="fas fa-check-circle"></i> Published</span>
                     </div>
                     <div class="tech-stack">
                         <span>React Native</span><span>REST API</span>
                     </div>
                 </div>
+
+                <div class="project-card fade-in">
+                    <div class="domain">EdTech / Campus</div>
+                    <h3>nGEMS</h3>
+                    <p>School & campus management app — attendance, timetables, assignments, fee payments, and parent–teacher communication.</p>
+                    <div class="platforms">
+                        <a href="https://play.google.com/store/apps/details?id=in.gemscampus.ngems" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <span><i class="fas fa-check-circle"></i> Published</span>
+                    </div>
+                    <div class="tech-stack">
+                        <span>React Native</span><span>Node.js</span><span>REST API</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="domain">EdTech / Learning</div>
+                    <h3>MyPathshala</h3>
+                    <p>E-learning app with live classes, recorded lectures, study material, quizzes, and progress tracking for students.</p>
+                    <div class="platforms">
+                        <a href="https://play.google.com/store/apps/details?id=com.mypathshala" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <span><i class="fas fa-check-circle"></i> Published</span>
+                    </div>
+                    <div class="tech-stack">
+                        <span>React Native</span><span>Node.js</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="domain">Healthcare</div>
+                    <h3>Medi-face</h3>
+                    <p>Healthcare app connecting patients with practitioners — appointments, records, and consultations.</p>
+                    <div class="platforms">
+                        <a href="https://play.google.com/store/apps/details?id=health.india.pims" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <span><i class="fas fa-check-circle"></i> Published</span>
+                    </div>
+                    <div class="tech-stack">
+                        <span>React Native</span><span>Node.js</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="domain">News Media</div>
+                    <h3>The Sun Malaysia</h3>
+                    <p>News app for Malaysia's The Sun Daily — breaking news, categorized sections, and real-time push alerts.</p>
+                    <div class="platforms">
+                        <a href="https://play.google.com/store/apps/details?id=my.thesundaily.android" target="_blank" rel="noopener"><i class="fab fa-android"></i> Android</a>
+                        <span><i class="fas fa-check-circle"></i> Published</span>
+                    </div>
+                    <div class="tech-stack">
+                        <span>React Native</span><span>REST API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Archived / Previously Published -->
+            <div class="section-title fade-in" style="margin-top: 3rem;">
+                <h2>Previously Published</h2>
+                <p>Shipped &amp; published apps now retired or delisted from the stores</p>
+            </div>
+            <div class="archived-apps fade-in">
+                <a href="https://play.google.com/store/apps/details?id=com.delviy" target="_blank" rel="noopener">Delviy (User · Store · Driver)</a>
+                <a href="https://play.google.com/store/apps/details?id=com.beyondnet.ridetectcustomer" target="_blank" rel="noopener">Ridetect (Customer · Driver)</a>
+                <a href="https://play.google.com/store/apps/details?id=com.bigroceryapp" target="_blank" rel="noopener">Big Grocery</a>
+                <a href="https://play.google.com/store/apps/details?id=com.opencartmobileapp.cart" target="_blank" rel="noopener">OpenCart Mobile App</a>
+                <a href="https://play.google.com/store/apps/details?id=com.vapeshop.cart" target="_blank" rel="noopener">Vapeshop Cart</a>
+                <a href="https://play.google.com/store/apps/details?id=com.zarafashion" target="_blank" rel="noopener">Zara Fashion</a>
+                <a href="https://play.google.com/store/apps/details?id=com.som.sport365" target="_blank" rel="noopener">Sport365</a>
+                <a href="https://play.google.com/store/apps/details?id=com.kodecube.nararestro" target="_blank" rel="noopener">Nara Restro</a>
+                <a href="https://play.google.com/store/apps/details?id=com.som.sairamcranes" target="_blank" rel="noopener">Sairam Cranes</a>
+                <a href="https://play.google.com/store/apps/details?id=com.mixlife.taxisarto" target="_blank" rel="noopener">Taxi Sarto</a>
+                <a href="https://play.google.com/store/apps/details?id=com.uponsys.d_boy" target="_blank" rel="noopener">D-Boy</a>
+                <a href="https://play.google.com/store/apps/details?id=com.som.bargerwar" target="_blank" rel="noopener">Bargerwar</a>
+                <a href="https://play.google.com/store/apps/details?id=com.som.dnsbp" target="_blank" rel="noopener">DNS BP</a>
+                <a href="https://play.google.com/store/apps/details?id=com.som.schoolapplication" target="_blank" rel="noopener">School Application</a>
+                <a href="https://play.google.com/store/apps/details?id=com.som.dguroo" target="_blank" rel="noopener">Dguroo</a>
+                <a href="https://play.google.com/store/apps/details?id=com.hajisonsfieldreports" target="_blank" rel="noopener">Haji Sons Field Reports</a>
+                <a href="https://play.google.com/store/apps/details?id=com.gktrinitas" target="_blank" rel="noopener">GK Trinitas</a>
+                <a href="https://play.google.com/store/apps/details?id=com.meerkat" target="_blank" rel="noopener">Meerkat</a>
+                <a href="https://play.google.com/store/apps/details?id=com.csfvaal" target="_blank" rel="noopener">CSF Vaal</a>
+                <a href="https://play.google.com/store/apps/details?id=com.myvaal" target="_blank" rel="noopener">My Vaal</a>
+                <a href="https://play.google.com/store/apps/details?id=com.seareasosapp" target="_blank" rel="noopener">SeAreaSOS</a>
+                <a href="https://play.google.com/store/apps/details?id=com.projectinfo" target="_blank" rel="noopener">Project Info</a>
+                <a href="https://play.google.com/store/apps/details?id=com.spinwheel.kodecube" target="_blank" rel="noopener">Spinwheel</a>
+                <a href="https://play.google.com/store/apps/details?id=com.sharedproone" target="_blank" rel="noopener">SharedProOne</a>
+                <a href="https://play.google.com/store/apps/details?id=com.youpupy.SocialApp" target="_blank" rel="noopener">Social App</a>
+                <a href="https://play.google.com/store/apps/details?id=com.shashank.riderapp" target="_blank" rel="noopener">Rider App</a>
+                <a href="https://play.google.com/store/apps/details?id=com.demoprojectweb" target="_blank" rel="noopener">Demo Project</a>
+                <a href="https://play.google.com/store/apps/details?id=com.som.babyrunner" target="_blank" rel="noopener">Baby Runner <small>(Unity game)</small></a>
+                <a href="https://play.google.com/store/apps/details?id=com.som.tappybird" target="_blank" rel="noopener">Tappy Bird <small>(Unity game)</small></a>
+                <a href="https://play.google.com/store/apps/details?id=com.som.Jumpingbheem" target="_blank" rel="noopener">Jumping Bheem <small>(Unity game)</small></a>
             </div>
         </div>
     </section>
